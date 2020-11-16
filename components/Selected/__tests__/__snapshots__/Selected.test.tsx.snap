@@ -25,6 +25,9 @@ exports[`Selected test renders without crash 1`] = `
         Object {
           "color": "#000",
         },
+        Object {
+          "fontFamily": "System",
+        },
         undefined,
       ]
     }
@@ -57,6 +60,9 @@ exports[`Selected test renders without crash 1`] = `
         Array [
           Object {
             "color": "#000",
+          },
+          Object {
+            "fontFamily": "System",
           },
           undefined,
         ]

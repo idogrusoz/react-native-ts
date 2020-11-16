@@ -26,6 +26,9 @@ Array [
           Object {
             "color": "#000",
           },
+          Object {
+            "fontFamily": "System",
+          },
           undefined,
         ]
       }
@@ -59,6 +62,9 @@ Array [
             Object {
               "color": "#000",
             },
+            Object {
+              "fontFamily": "System",
+            },
             undefined,
           ]
         }
@@ -90,6 +96,9 @@ Array [
         Array [
           Object {
             "color": "#000",
+          },
+          Object {
+            "fontFamily": "System",
           },
           undefined,
         ]
@@ -123,6 +132,9 @@ Array [
           Array [
             Object {
               "color": "#000",
+            },
+            Object {
+              "fontFamily": "System",
             },
             undefined,
           ]
@@ -163,6 +175,9 @@ Array [
         Array [
           Object {
             "color": "#000",
+          },
+          Object {
+            "fontFamily": "System",
           },
           undefined,
         ]

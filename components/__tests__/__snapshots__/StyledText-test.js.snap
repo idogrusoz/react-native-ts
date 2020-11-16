@@ -7,6 +7,9 @@ exports[`renders correctly 1`] = `
       Object {
         "color": "#000",
       },
+      Object {
+        "fontFamily": "System",
+      },
       Array [
         undefined,
         Object {

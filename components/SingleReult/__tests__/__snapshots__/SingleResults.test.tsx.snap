@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Single result test renders witthout crash 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "backgroundColor": "#fff",
+      },
+      Object {
+        "display": "flex",
+        "flexDirection": "column",
+        "justifyContent": "center",
+      },
+    ]
+  }
+>
+  <Image
+    source={
+      Object {
+        "uri": "image",
+      }
+    }
+    style={
+      Object {
+        "height": 231,
+        "width": 312,
+      }
+    }
+  />
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "#000",
+        },
+        Object {
+          "fontFamily": "System",
+        },
+        Object {
+          "lineHeight": 1.5,
+          "textAlign": "center",
+          "width": 312,
+        },
+      ]
+    }
+  >
+    name
+  </Text>
+</View>
+`;
