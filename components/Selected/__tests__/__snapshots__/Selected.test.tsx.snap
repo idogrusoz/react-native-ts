@@ -9,13 +9,12 @@ exports[`Selected test renders without crash 1`] = `
       },
       Object {
         "alignItems": "center",
-        "backgroundColor": "#b2ebf2",
         "display": "flex",
         "flexDirection": "row",
-        "height": "5%",
+        "height": 25,
         "justifyContent": "space-between",
-        "marginVertical": "2%",
-        "paddingHorizontal": "3%",
+        "marginVertical": 10,
+        "paddingHorizontal": 30,
       },
     ]
   }
@@ -44,7 +43,12 @@ exports[`Selected test renders without crash 1`] = `
     onStartShouldSetResponder={[Function]}
     style={
       Object {
+        "display": "flex",
+        "flexDirection": "row",
+        "height": 20,
+        "justifyContent": "center",
         "opacity": 1,
+        "width": 30,
       }
     }
   >
