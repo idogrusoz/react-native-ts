@@ -132,3 +132,10 @@ export type Recipe = {
         productMatches: WineProduct[];
     };
 };
+
+export type RecipeState = {
+    searchResults: RecipeSummary[];
+    selectedRecipe: RecipeSummary | null;
+    detailedRecipe: Recipe | null;
+    randomResults: Recipe[];
+};

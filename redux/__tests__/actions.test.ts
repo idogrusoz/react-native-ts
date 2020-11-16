@@ -1,9 +1,7 @@
-import { removeSelected, setSuggestions, setSuggestionsAsync } from "./../actions/actions";
+import { removeSelected, setSuggestionsAsync } from "./../actions/actions";
 import { Actions } from "./../actions/actionTypes";
-import React from "react";
 import { setInput, setSelected } from "../actions/actions";
 import { Ingredient } from "../../types";
-import axios from "axios";
 jest.mock("axios");
 
 describe("Redux actions test", () => {
@@ -23,7 +21,7 @@ describe("Redux actions test", () => {
         expect(inputResult.type).toBe(Actions.SET_SELECTED);
         expect(inputResult.payload.selected).toEqual(mockIngredient);
     });
-    it("creates ate suggestions action", () => {
+    it("creates set suggestions action", () => {
         const suggestions = setSuggestionsAsync(mockArray);
         expect(suggestions.type).toBe(Actions.SET_SUGGESTIONS);
         expect(suggestions.payload.suggestions).toEqual(mockArray);

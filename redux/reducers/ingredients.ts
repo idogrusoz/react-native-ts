@@ -1,4 +1,4 @@
-import { IngredientsState, Action, Ingredient } from "../../types";
+import { IngredientsState, Action } from "../../types";
 import { Actions } from "../actions/actionTypes";
 
 const initialState: IngredientsState = {
