@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Selected test renders without crash 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "backgroundColor": "#fff",
+      },
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#b2ebf2",
+        "display": "flex",
+        "flexDirection": "row",
+        "height": "5%",
+        "justifyContent": "space-between",
+        "marginVertical": "2%",
+        "paddingHorizontal": "3%",
+      },
+    ]
+  }
+>
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "#000",
+        },
+        undefined,
+      ]
+    }
+  >
+    name
+  </Text>
+  <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "opacity": 1,
+      }
+    }
+  >
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#000",
+          },
+          undefined,
+        ]
+      }
+    >
+      x
+    </Text>
+  </View>
+</View>
+`;
