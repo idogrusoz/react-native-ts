@@ -1,13 +1,13 @@
 import React from "react";
 import { TouchableOpacity, StyleSheet } from "react-native";
 import { useSelector } from "react-redux";
-import { RootState } from "../../types";
 import { Text } from "../Themed";
 import Selected from "../Selected/Selected";
 import { primary } from "../../constants/Colors";
+import { ingredientsSelector } from "../../redux/selectors";
 
 const SelectedWrapper = () => {
-    const { selected } = useSelector((state: RootState) => state.ingredients);
+    const { selected } = useSelector(ingredientsSelector);
     return (
         <>
             {selected.map((item, i) => {
