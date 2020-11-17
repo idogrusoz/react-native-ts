@@ -1,6 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
-import React, { ReactText, useEffect, useState } from "react";
-import { StyleSheet, TouchableOpacity, TextInput, NativeSyntheticEvent, TextInputChangeEventData } from "react-native";
+import React, { useEffect, useState } from "react";
+import { StyleSheet, TouchableOpacity, TextInput, TouchableWithoutFeedback, Keyboard } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { View, Text } from "../components/Themed";
 import { setIsRandom, setLoading, setRandomCount, setRandomResults } from "../redux/actions/actions";
@@ -28,19 +28,21 @@ const RandomScreen = () => {
         dispatch(setIsRandom(true));
     }, []);
     return (
-        <View style={styles.center}>
-            <TextInput
-                placeholder="How many recipes would you like to find?"
-                placeholderTextColor="black"
-                style={{ width: 300, height: 50, backgroundColor: "white", textAlign: "center" }}
-                value={input}
-                keyboardType="number-pad"
-                onChangeText={handleChange}
-            />
-            <TouchableOpacity onPress={handleSearch} style={styles.button}>
-                <Text style={styles.buttonLabel}>Search</Text>
-            </TouchableOpacity>
-        </View>
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+            <View style={styles.center}>
+                <Text style={styles.text}>How many recipes would you like to find?</Text>
+                <TextInput
+                    placeholderTextColor="black"
+                    style={styles.input}
+                    value={input}
+                    keyboardType="number-pad"
+                    onChangeText={handleChange}
+                />
+                <TouchableOpacity onPress={handleSearch} style={styles.button}>
+                    <Text style={styles.buttonLabel}>Search</Text>
+                </TouchableOpacity>
+            </View>
+        </TouchableWithoutFeedback>
     );
 };
 
@@ -65,6 +67,16 @@ const styles = StyleSheet.create({
     },
     buttonLabel: {
         color: "#fff",
+    },
+    text: {
+        fontSize: 16,
+        marginBottom: 15,
+    },
+    input: {
+        width: 90,
+        height: 50,
+        backgroundColor: "white",
+        textAlign: "center",
     },
 });
 
