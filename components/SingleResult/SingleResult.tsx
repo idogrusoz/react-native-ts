@@ -2,9 +2,10 @@ import React, { FunctionComponent } from "react";
 import { View, Text } from "../Themed";
 import { Image, StyleSheet } from "react-native";
 import { TouchableHighlight } from "react-native-gesture-handler";
-import { useDispatch } from "react-redux";
-import { setLoading, setRecipeWithFetch } from "../../redux/actions/actions";
+import { useDispatch, useSelector } from "react-redux";
+import { setLoading, setRecipe, setRecipeWithFetch } from "../../redux/actions/actions";
 import { useNavigation } from "@react-navigation/native";
+import { recipesSelector } from "../../redux/selectors";
 
 type SingleResultProps = {
     id: number;
@@ -13,11 +14,16 @@ type SingleResultProps = {
 };
 
 const SingleResult: FunctionComponent<SingleResultProps> = ({ id, title, image }) => {
+    const { randomResults, isRandom } = useSelector(recipesSelector);
     const dispatch = useDispatch();
     const navigation = useNavigation();
     const handlePress = () => {
         dispatch(setLoading(true));
-        dispatch(setRecipeWithFetch(id));
+        if (isRandom) {
+            dispatch(setRecipe(randomResults.filter((item) => item.id === id)[0]));
+        } else {
+            dispatch(setRecipeWithFetch(id));
+        }
         navigation.navigate("Recipe");
     };
     return (

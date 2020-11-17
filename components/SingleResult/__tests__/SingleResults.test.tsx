@@ -3,6 +3,7 @@ import React from "react";
 import SingleResult from "../SingleResult";
 jest.mock("react-redux", () => ({
     useDispatch: jest.fn(),
+    useSelector: () => jest.fn(),
 }));
 jest.mock("@react-navigation/native", () => ({
     useNavigation: jest.fn(),
