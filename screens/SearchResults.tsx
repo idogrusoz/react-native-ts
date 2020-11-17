@@ -1,24 +1,39 @@
-import React from "react";
+import { useNavigation } from "@react-navigation/native";
+import React, { useEffect } from "react";
 import { ActivityIndicator, StyleSheet } from "react-native";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import SingleResult from "../components/SingleResult/SingleResult";
 import { View, Text } from "../components/Themed";
+import { setIsRandom, setLoading, setRandomResults } from "../redux/actions/actions";
 import { recipesSelector } from "../redux/selectors";
-import { RecipeSummary } from "../types";
+import { Recipe, RecipeSummary } from "../types";
 
 const SearchResults = () => {
-    const { loading, searchResults } = useSelector(recipesSelector);
+    const { loading, searchResults, randomResults, isRandom } = useSelector(recipesSelector);
 
+    const results = isRandom ? randomResults : searchResults;
     return loading ? (
         <View style={styles.center}>
             <ActivityIndicator />
         </View>
-    ) : searchResults.length > 0 ? (
-        <View style={styles.results}>
-            {searchResults.map((item: RecipeSummary) => {
-                return <SingleResult id={item.id} title={item.title} image={item.image} key={item.id + item.title} />;
-            })}
-        </View>
+    ) : results.length > 0 ? (
+        isRandom ? (
+            <View style={styles.results}>
+                {randomResults.map((item: Recipe) => {
+                    return (
+                        <SingleResult id={item.id} title={item.title} image={item.image} key={item.id + item.title} />
+                    );
+                })}
+            </View>
+        ) : (
+            <View style={styles.results}>
+                {searchResults.map((item: RecipeSummary) => {
+                    return (
+                        <SingleResult id={item.id} title={item.title} image={item.image} key={item.id + item.title} />
+                    );
+                })}
+            </View>
+        )
     ) : (
         <View style={styles.center}>
             <Text style={styles.text}>No recipes found</Text>

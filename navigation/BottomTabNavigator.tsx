@@ -8,10 +8,10 @@ import Recipe from "../components/Recipe/Recipe";
 import Colors from "../constants/Colors";
 import useColorScheme from "../hooks/useColorScheme";
 import { recipesSelector } from "../redux/selectors";
-import Search from "../screens/Search";
 import SearchResults from "../screens/SearchResults";
-import TabTwoScreen from "../screens/TabTwoScreen";
 import { BottomTabParamList, TabOneParamList, TabTwoParamList } from "../types";
+import SearchScreen from "../screens/SearchScreen";
+import RandomScreen from "../screens/RandomScreen";
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -50,7 +50,7 @@ function SearchTabNavigator() {
         <TabOneStack.Navigator>
             <TabOneStack.Screen
                 name="SearchTab"
-                component={Search}
+                component={SearchScreen}
                 options={{ headerTitle: "Search By Ingredients" }}
             />
             <TabOneStack.Screen
@@ -70,9 +70,24 @@ function SearchTabNavigator() {
 const TabTwoStack = createStackNavigator<TabTwoParamList>();
 
 function RandomTabNavigator() {
+    const { recipe } = useSelector(recipesSelector);
     return (
         <TabTwoStack.Navigator>
-            <TabTwoStack.Screen name="RandomTab" component={TabTwoScreen} options={{ headerTitle: "Random Recipes" }} />
+            <TabTwoStack.Screen
+                name="RandomScreen"
+                component={RandomScreen}
+                options={{ headerTitle: "Random Recipes" }}
+            />
+            <TabTwoStack.Screen
+                name="SearchResults"
+                component={SearchResults}
+                options={{ headerTitle: "Random Recipes" }}
+            />
+            <TabTwoStack.Screen
+                name="Recipe"
+                component={Recipe}
+                options={{ headerTitle: recipe?.title.toUpperCase() }}
+            />
         </TabTwoStack.Navigator>
     );
 }

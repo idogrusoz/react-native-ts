@@ -17,7 +17,9 @@ export type TabOneParamList = {
 };
 
 export type TabTwoParamList = {
-    RandomTab: undefined;
+    RandomScreen: undefined;
+    SearchResults: undefined;
+    Recipe: undefined;
 };
 
 export type Action<K extends string, T> = {
@@ -141,4 +143,6 @@ export type RecipeState = {
     recipe: Recipe | null;
     randomResults: Recipe[];
     loading: boolean;
+    isRandom: boolean;
+    randomCount: number;
 };
