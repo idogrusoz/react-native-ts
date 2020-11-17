@@ -2,7 +2,7 @@ import { Actions } from "./redux/actions/actionTypes";
 
 export type RootStackParamList = {
     Root: undefined;
-    NotFound: undefined;
+    Error: undefined;
 };
 
 export type BottomTabParamList = {

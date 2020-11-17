@@ -1,6 +1,7 @@
 import { Recipe, RecipeSummary } from "./../../types";
 import axios from "axios";
 import { Dispatch } from "redux";
+import * as RootNavigation from "../../navigation/RootNavigation";
 import { Action, Ingredient } from "../../types";
 import { Actions } from "./actionTypes";
 
@@ -48,7 +49,7 @@ export const setSuggestions = (input: string) => {
             )
             .then((res) => res.data.results)
             .then((results) => dispatch(setSuggestionsAsync(results)))
-            .catch((err) => console.log("err", err));
+            .catch((err) => RootNavigation.replace("Error"));
     };
 };
 
@@ -88,7 +89,7 @@ export const setSearchResults = (ingredients: string[]) => {
             )
             .then((response) => response.data)
             .then((result) => dispatch(setSearchResultsAsync(result)))
-            .catch((err) => console.log("err", err));
+            .catch((err) => RootNavigation.replace("Error"));
     };
 };
 
@@ -107,7 +108,7 @@ export const setRecipeWithFetch = (id: number) => {
             .get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=e07f3d4571c945aba22f1c2255303094`)
             .then((response) => response.data)
             .then((recipe) => dispatch(setRecipe(recipe)))
-            .catch((err) => console.log("err", err));
+            .catch((err) => RootNavigation.replace("Error"));
     };
 };
 
@@ -126,7 +127,7 @@ export const setRandomResults = (count: number) => {
             .get(`https://api.spoonacular.com/recipes/random?number=${count}&apiKey=e07f3d4571c945aba22f1c2255303094`)
             .then((response) => response.data.recipes)
             .then((recipes) => dispatch(setRandomResultsAsync(recipes)))
-            .catch((err) => console.log("err", err));
+            .catch((err) => RootNavigation.replace("Error"));
     };
 };
 
