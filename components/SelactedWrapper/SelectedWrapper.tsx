@@ -26,7 +26,7 @@ const SelectedWrapper = () => {
             })}
             {selected.length > 0 && (
                 <TouchableOpacity onPress={handleSearch} style={styles.button}>
-                    <Text>Search</Text>
+                    <Text style={styles.buttonLabel}>Search</Text>
                 </TouchableOpacity>
             )}
         </>
@@ -45,6 +45,9 @@ const styles = StyleSheet.create({
         width: 90,
         alignSelf: "center",
         marginVertical: 15,
+    },
+    buttonLabel: {
+        color: "#fff",
     },
 });
 
