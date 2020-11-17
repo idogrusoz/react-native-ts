@@ -1,4 +1,5 @@
-import React from "react";
+import { StackScreenProps } from "@react-navigation/stack";
+import React, { FunctionComponent } from "react";
 import { TouchableOpacity, StyleSheet, useColorScheme } from "react-native";
 import Autocomplete from "react-native-autocomplete-input";
 import { useDispatch, useSelector } from "react-redux";
@@ -6,9 +7,11 @@ import SelectedWrapper from "../components/SelactedWrapper/SelectedWrapper";
 import { View, Text } from "../components/Themed";
 import Colors from "../constants/Colors";
 import { setInput, setSelected, setSuggestions, setSuggestionsAsync } from "../redux/actions/actions";
-import { RootState } from "../types";
+import { RootState, TabOneParamList } from "../types";
 
-const Search = () => {
+type SearchProps = StackScreenProps<TabOneParamList, "SearchTab">;
+
+const Search: FunctionComponent<SearchProps> = ({ navigation }) => {
     const theme = useColorScheme() || "light";
     const { input, suggestions } = useSelector((state: RootState) => state.ingredients);
     const dispatch = useDispatch();
@@ -18,7 +21,7 @@ const Search = () => {
     };
     return (
         <View>
-            <SelectedWrapper />
+            <SelectedWrapper navigate={navigation.navigate} />
             <Autocomplete
                 data={suggestions && suggestions.length > 0 ? [...suggestions] : []}
                 value={input}

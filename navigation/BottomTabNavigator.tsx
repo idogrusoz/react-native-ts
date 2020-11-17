@@ -6,6 +6,7 @@ import * as React from "react";
 import Colors from "../constants/Colors";
 import useColorScheme from "../hooks/useColorScheme";
 import Search from "../screens/Search";
+import SearchResults from "../screens/SearchResults";
 import TabTwoScreen from "../screens/TabTwoScreen";
 import { BottomTabParamList, TabOneParamList, TabTwoParamList } from "../types";
 
@@ -47,6 +48,11 @@ function SearchTabNavigator() {
                 name="SearchTab"
                 component={Search}
                 options={{ headerTitle: "Search By Ingredients" }}
+            />
+            <TabOneStack.Screen
+                name="SearchResults"
+                component={SearchResults}
+                options={{ headerTitle: "Matching Recipes" }}
             />
         </TabOneStack.Navigator>
     );

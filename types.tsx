@@ -12,6 +12,7 @@ export type BottomTabParamList = {
 
 export type TabOneParamList = {
     SearchTab: undefined;
+    SearchResults: undefined;
 };
 
 export type TabTwoParamList = {
@@ -39,6 +40,7 @@ export type IngredientsState = {
 
 export type RootState = {
     ingredients: IngredientsState;
+    recipes: RecipeState;
 };
 
 export interface Measure {
@@ -138,4 +140,5 @@ export type RecipeState = {
     selectedRecipe: RecipeSummary | null;
     detailedRecipe: Recipe | null;
     randomResults: Recipe[];
+    loading: boolean;
 };
