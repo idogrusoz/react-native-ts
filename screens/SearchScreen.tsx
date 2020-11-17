@@ -1,17 +1,17 @@
 import { StackScreenProps } from "@react-navigation/stack";
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent, useEffect } from "react";
 import { TouchableOpacity, StyleSheet, useColorScheme, TouchableWithoutFeedback, Keyboard } from "react-native";
 import Autocomplete from "react-native-autocomplete-input";
 import { useDispatch, useSelector } from "react-redux";
 import SelectedWrapper from "../components/SelactedWrapper/SelectedWrapper";
 import { View, Text } from "../components/Themed";
 import Colors from "../constants/Colors";
-import { setInput, setSelected, setSuggestions, setSuggestionsAsync } from "../redux/actions/actions";
+import { setInput, setIsRandom, setSelected, setSuggestions, setSuggestionsAsync } from "../redux/actions/actions";
 import { RootState, TabOneParamList } from "../types";
 
 type SearchProps = StackScreenProps<TabOneParamList, "SearchTab">;
 
-const Search: FunctionComponent<SearchProps> = ({ navigation }) => {
+const SearchScreen: FunctionComponent<SearchProps> = ({ navigation }) => {
     const theme = useColorScheme() || "light";
     const { input, suggestions } = useSelector((state: RootState) => state.ingredients);
     const dispatch = useDispatch();
@@ -19,6 +19,9 @@ const Search: FunctionComponent<SearchProps> = ({ navigation }) => {
         dispatch(setInput(text));
         dispatch(setSuggestions(text));
     };
+    useEffect(() => {
+        dispatch(setIsRandom(false));
+    }, []);
     return (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
             <View style={styles(theme).wrapper}>
@@ -69,4 +72,4 @@ const styles = (theme: "light" | "dark") => {
     });
 };
 
-export default Search;
+export default SearchScreen;
