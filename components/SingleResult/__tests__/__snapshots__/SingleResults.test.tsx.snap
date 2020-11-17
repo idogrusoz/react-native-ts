@@ -19,11 +19,7 @@ exports[`Single result test renders witthout crash 1`] = `
           Object {
             "backgroundColor": "#fff",
           },
-          Object {
-            "display": "flex",
-            "flexDirection": "column",
-            "justifyContent": "center",
-          },
+          null,
         ]
       }
     >
@@ -35,8 +31,8 @@ exports[`Single result test renders witthout crash 1`] = `
         }
         style={
           Object {
-            "height": 115,
-            "width": 156,
+            "height": 126,
+            "width": 190,
           }
         }
       />

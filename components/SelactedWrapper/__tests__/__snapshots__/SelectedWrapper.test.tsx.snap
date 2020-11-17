@@ -179,7 +179,9 @@ Array [
           Object {
             "fontFamily": "System",
           },
-          undefined,
+          Object {
+            "color": "#fff",
+          },
         ]
       }
     >
