@@ -19,6 +19,11 @@ function ingredients(state = initialState, action: Action<any, any>) {
                 ...state,
                 selected: [...state.selected, action.payload.selected],
             };
+        case Actions.CLEAR_SELECTED:
+            return {
+                ...state,
+                selected: [],
+            };
         case Actions.REMOVE_SELECTED:
             return {
                 ...state,

@@ -22,6 +22,15 @@ export const setSelected = (selected: Ingredient): Action<"selected", Ingredient
     };
 };
 
+export const clearSelected = (): Action<"selected", Array<never>> => {
+    return {
+        type: Actions.CLEAR_SELECTED,
+        payload: {
+            selected: [],
+        },
+    };
+};
+
 export const setSuggestionsAsync = (suggestions: Ingredient[]): Action<"suggestions", Ingredient[]> => {
     return {
         type: Actions.SET_SUGGESTIONS,
@@ -48,6 +57,15 @@ export const removeSelected = (index: number): Action<"index", number> => {
         type: Actions.REMOVE_SELECTED,
         payload: {
             index,
+        },
+    };
+};
+
+export const setLoading = (loading: boolean): Action<"loading", boolean> => {
+    return {
+        type: Actions.SET_LOADING,
+        payload: {
+            loading,
         },
     };
 };
