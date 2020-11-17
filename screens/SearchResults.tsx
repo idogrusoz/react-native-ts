@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { ActivityIndicator, StyleSheet } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
-import SingleResult from "../components/SingleReult/SingleResult";
+import SingleResult from "../components/SingleResult/SingleResult";
 import { View, Text } from "../components/Themed";
 import { setSearchResultsAsync } from "../redux/actions/actions";
 import { recipesSelector } from "../redux/selectors";
