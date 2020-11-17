@@ -21,6 +21,7 @@ function recipes(state = initialState, action: Action<any, any>) {
             return {
                 ...state,
                 recipe: { ...action.payload.recipe },
+                loading: false,
             };
         case Actions.SET_RANDOM_RESULTS:
             return {

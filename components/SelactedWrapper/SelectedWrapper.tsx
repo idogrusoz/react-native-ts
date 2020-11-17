@@ -1,22 +1,22 @@
-import React, { FunctionComponent } from "react";
+import React from "react";
 import { TouchableOpacity, StyleSheet } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { Text } from "../Themed";
 import Selected from "../Selected/Selected";
 import { primary } from "../../constants/Colors";
 import { ingredientsSelector } from "../../redux/selectors";
-import { clearSelected, setSearchResults } from "../../redux/actions/actions";
+import { clearSelected, setLoading, setSearchResults } from "../../redux/actions/actions";
 import { Ingredient } from "../../types";
-type SelectedWrapperProps = {
-    navigate: (route: string) => void;
-};
+import { useNavigation } from "@react-navigation/native";
 
-const SelectedWrapper: FunctionComponent<SelectedWrapperProps> = ({ navigate }) => {
+const SelectedWrapper = () => {
     const { selected } = useSelector(ingredientsSelector);
     const dispatch = useDispatch();
+    const navigation = useNavigation();
     const handleSearch = () => {
+        dispatch(setLoading(true));
         dispatch(setSearchResults(selected.map((item: Ingredient) => item.name)));
-        navigate("SearchResults");
+        navigation.navigate("SearchResults");
         dispatch(clearSelected());
     };
     return (

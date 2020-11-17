@@ -22,7 +22,7 @@ const Search: FunctionComponent<SearchProps> = ({ navigation }) => {
     return (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
             <View style={styles(theme).wrapper}>
-                <SelectedWrapper navigate={navigation.navigate} />
+                <SelectedWrapper />
                 <Autocomplete
                     data={suggestions && suggestions.length > 0 ? [...suggestions] : []}
                     value={input}

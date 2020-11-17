@@ -1,20 +1,14 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { ActivityIndicator, StyleSheet } from "react-native";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import SingleResult from "../components/SingleResult/SingleResult";
 import { View, Text } from "../components/Themed";
-import { setSearchResultsAsync } from "../redux/actions/actions";
 import { recipesSelector } from "../redux/selectors";
 import { RecipeSummary } from "../types";
 
 const SearchResults = () => {
     const { loading, searchResults } = useSelector(recipesSelector);
-    const dispatch = useDispatch();
-    useEffect(() => {
-        return () => {
-            dispatch(setSearchResultsAsync([]));
-        };
-    }, []);
+
     return loading ? (
         <View style={styles.center}>
             <ActivityIndicator />
@@ -22,7 +16,7 @@ const SearchResults = () => {
     ) : searchResults.length > 0 ? (
         <View style={styles.results}>
             {searchResults.map((item: RecipeSummary) => {
-                return <SingleResult title={item.title} image={item.image} key={item.id.toString()} />;
+                return <SingleResult id={item.id} title={item.title} image={item.image} key={item.id + item.title} />;
             })}
         </View>
     ) : (
