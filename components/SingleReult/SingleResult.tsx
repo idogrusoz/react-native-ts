@@ -3,15 +3,17 @@ import { View, Text } from "../Themed";
 import { Image, StyleSheet } from "react-native";
 
 type SingleResultProps = {
-    name: string;
+    title: string;
     image: string;
 };
 
-const SingleResult: FunctionComponent<SingleResultProps> = ({ name, image }) => {
+const SingleResult: FunctionComponent<SingleResultProps> = ({ title, image }) => {
     return (
         <View style={styles.wrapper}>
             <Image source={{ uri: image }} style={styles.image} />
-            <Text style={styles.name}>name</Text>
+            <Text style={styles.title} numberOfLines={1}>
+                {title}
+            </Text>
         </View>
     );
 };
@@ -23,13 +25,12 @@ const styles = StyleSheet.create({
         justifyContent: "center",
     },
     image: {
-        width: 312,
-        height: 231,
+        width: 156,
+        height: 115,
     },
-    name: {
-        width: 312,
+    title: {
+        width: 115,
         textAlign: "center",
-        lineHeight: 1.5,
     },
 });
 
