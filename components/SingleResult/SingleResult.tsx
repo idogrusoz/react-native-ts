@@ -28,7 +28,7 @@ const SingleResult: FunctionComponent<SingleResultProps> = ({ id, title, image }
     };
     return (
         <TouchableHighlight onPress={handlePress}>
-            <View style={styles.wrapper}>
+            <View>
                 <Image source={{ uri: image }} style={styles.image} />
                 <Text style={styles.title} numberOfLines={1}>
                     {title}
@@ -39,14 +39,9 @@ const SingleResult: FunctionComponent<SingleResultProps> = ({ id, title, image }
 };
 
 const styles = StyleSheet.create({
-    wrapper: {
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-    },
     image: {
-        width: 156,
-        height: 115,
+        width: 190,
+        height: 126,
     },
     title: {
         width: 115,

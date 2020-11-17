@@ -1,38 +1,35 @@
-import { useNavigation } from "@react-navigation/native";
-import React, { useEffect } from "react";
-import { ActivityIndicator, StyleSheet } from "react-native";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
+import { ActivityIndicator, StyleSheet, FlatList } from "react-native";
+import { useSelector } from "react-redux";
 import SingleResult from "../components/SingleResult/SingleResult";
 import { View, Text } from "../components/Themed";
-import { setIsRandom, setLoading, setRandomResults } from "../redux/actions/actions";
 import { recipesSelector } from "../redux/selectors";
-import { Recipe, RecipeSummary } from "../types";
 
 const SearchResults = () => {
     const { loading, searchResults, randomResults, isRandom } = useSelector(recipesSelector);
+    const renderItem = ({ item }: { item: any }) => {
+        return <SingleResult id={item.id} title={item.title} image={item.image} key={item.id + item.title} />;
+    };
 
-    const results = isRandom ? randomResults : searchResults;
     return loading ? (
         <View style={styles.center}>
             <ActivityIndicator />
         </View>
-    ) : results.length > 0 ? (
+    ) : randomResults.length > 0 || searchResults.length > 0 ? (
         isRandom ? (
-            <View style={styles.results}>
-                {randomResults.map((item: Recipe) => {
-                    return (
-                        <SingleResult id={item.id} title={item.title} image={item.image} key={item.id + item.title} />
-                    );
-                })}
-            </View>
+            <FlatList
+                numColumns={2}
+                renderItem={renderItem}
+                data={randomResults}
+                keyExtractor={(item) => item.id + item.title}
+            />
         ) : (
-            <View style={styles.results}>
-                {searchResults.map((item: RecipeSummary) => {
-                    return (
-                        <SingleResult id={item.id} title={item.title} image={item.image} key={item.id + item.title} />
-                    );
-                })}
-            </View>
+            <FlatList
+                numColumns={2}
+                renderItem={renderItem}
+                data={searchResults}
+                keyExtractor={(item) => item.id + item.title}
+            />
         )
     ) : (
         <View style={styles.center}>
@@ -47,13 +44,6 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
-    },
-    results: {
-        display: "flex",
-        flexDirection: "row",
-        flexWrap: "wrap",
-        justifyContent: "space-around",
-        alignItems: "flex-start",
     },
     text: {
         fontSize: 25,
