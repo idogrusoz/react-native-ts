@@ -9,11 +9,16 @@ const spyDispatch = jest.spyOn(redux, "useDispatch");
 
 describe("SelectedWrapper test", () => {
     let wrapper: RenderAPI;
+    const props: any = {
+        navigaion: {
+            navigate: jest.fn(),
+        },
+    };
 
     beforeEach(() => {
         spySelect.mockReturnValue({ selected: mockSelected });
         spyDispatch.mockImplementation(jest.fn());
-        wrapper = render(<SelectedWrapper />);
+        wrapper = render(<SelectedWrapper {...props} />);
     });
     it("renders without crash", () => {
         expect(wrapper).toMatchSnapshot();

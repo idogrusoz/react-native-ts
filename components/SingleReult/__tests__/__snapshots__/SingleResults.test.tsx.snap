@@ -45,7 +45,7 @@ exports[`Single result test renders witthout crash 1`] = `
       ]
     }
   >
-    name
+    title
   </Text>
 </View>
 `;
