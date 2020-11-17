@@ -13,6 +13,7 @@ export type BottomTabParamList = {
 export type TabOneParamList = {
     SearchTab: undefined;
     SearchResults: undefined;
+    Recipe: undefined;
 };
 
 export type TabTwoParamList = {

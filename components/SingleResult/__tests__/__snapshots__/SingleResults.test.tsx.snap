@@ -1,51 +1,65 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Single result test renders witthout crash 1`] = `
-<View
-  style={
-    Array [
-      Object {
-        "backgroundColor": "#fff",
-      },
-      Object {
-        "display": "flex",
-        "flexDirection": "column",
-        "justifyContent": "center",
-      },
-    ]
-  }
+<RNGestureHandlerButton
+  collapsable={false}
+  onGestureEvent={[Function]}
+  onGestureHandlerEvent={[Function]}
+  onGestureHandlerStateChange={[Function]}
+  onHandlerStateChange={[Function]}
+  rippleColor={0}
 >
-  <Image
-    source={
-      Object {
-        "uri": "image",
-      }
-    }
-    style={
-      Object {
-        "height": 231,
-        "width": 312,
-      }
-    }
-  />
-  <Text
-    style={
-      Array [
-        Object {
-          "color": "#000",
-        },
-        Object {
-          "fontFamily": "System",
-        },
-        Object {
-          "lineHeight": 1.5,
-          "textAlign": "center",
-          "width": 312,
-        },
-      ]
-    }
+  <View
+    accessible={true}
+    style={Object {}}
   >
-    title
-  </Text>
-</View>
+    <View
+      style={
+        Array [
+          Object {
+            "backgroundColor": "#fff",
+          },
+          Object {
+            "display": "flex",
+            "flexDirection": "column",
+            "justifyContent": "center",
+          },
+        ]
+      }
+    >
+      <Image
+        source={
+          Object {
+            "uri": "image",
+          }
+        }
+        style={
+          Object {
+            "height": 115,
+            "width": 156,
+          }
+        }
+      />
+      <Text
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "color": "#000",
+            },
+            Object {
+              "fontFamily": "System",
+            },
+            Object {
+              "textAlign": "center",
+              "width": 115,
+            },
+          ]
+        }
+      >
+        name
+      </Text>
+    </View>
+  </View>
+</RNGestureHandlerButton>
 `;
