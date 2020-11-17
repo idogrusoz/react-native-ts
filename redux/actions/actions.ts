@@ -92,21 +92,22 @@ export const setSearchResults = (ingredients: string[]) => {
     };
 };
 
-export const setSelectedRecipe = (recipe: RecipeSummary): Action<"recipe", RecipeSummary> => {
+export const setRecipe = (recipe: Recipe): Action<"recipe", Recipe> => {
     return {
-        type: Actions.SET_SELECTED_RECIPE,
+        type: Actions.SET_RECIPE,
         payload: {
             recipe,
         },
     };
 };
 
-export const setDetailedRecipe = (detailedRecipe: Recipe): Action<"detailedRecipe", Recipe> => {
-    return {
-        type: Actions.SET_DETAILED_RECIPE,
-        payload: {
-            detailedRecipe,
-        },
+export const setRecipeWithFetch = (id: number) => {
+    return (dispatch: Dispatch<Action<"recipe", Recipe>>) => {
+        axios
+            .get(`https://api.spoonacular.com/recipes/${id}`)
+            .then((response) => response.data)
+            .then((recipe) => dispatch(setRecipe(recipe)))
+            .catch((err) => console.log("err", err));
     };
 };
 

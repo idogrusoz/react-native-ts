@@ -137,8 +137,7 @@ export type Recipe = {
 
 export type RecipeState = {
     searchResults: RecipeSummary[];
-    selectedRecipe: RecipeSummary | null;
-    detailedRecipe: Recipe | null;
+    recipe: Recipe | null;
     randomResults: Recipe[];
     loading: boolean;
 };

@@ -4,8 +4,7 @@ import { Actions } from "../actions/actionTypes";
 
 const initialState: RecipeState = {
     searchResults: [],
-    selectedRecipe: null,
-    detailedRecipe: null,
+    recipe: null,
     randomResults: [],
     loading: false,
 };
@@ -18,15 +17,10 @@ function recipes(state = initialState, action: Action<any, any>) {
                 searchResults: [...action.payload.result],
                 loading: false,
             };
-        case Actions.SET_SELECTED_RECIPE:
+        case Actions.SET_RECIPE:
             return {
                 ...state,
-                selectedRecipe: { ...action.payload.recipe },
-            };
-        case Actions.SET_DETAILED_RECIPE:
-            return {
-                ...state,
-                detailedRecipe: { ...action.payload.detailedRecipe },
+                recipe: { ...action.payload.recipe },
             };
         case Actions.SET_RANDOM_RESULTS:
             return {
