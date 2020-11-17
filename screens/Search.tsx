@@ -1,6 +1,6 @@
 import { StackScreenProps } from "@react-navigation/stack";
 import React, { FunctionComponent } from "react";
-import { TouchableOpacity, StyleSheet, useColorScheme } from "react-native";
+import { TouchableOpacity, StyleSheet, useColorScheme, TouchableWithoutFeedback, Keyboard } from "react-native";
 import Autocomplete from "react-native-autocomplete-input";
 import { useDispatch, useSelector } from "react-redux";
 import SelectedWrapper from "../components/SelactedWrapper/SelectedWrapper";
@@ -20,36 +20,41 @@ const Search: FunctionComponent<SearchProps> = ({ navigation }) => {
         dispatch(setSuggestions(text));
     };
     return (
-        <View>
-            <SelectedWrapper navigate={navigation.navigate} />
-            <Autocomplete
-                data={suggestions && suggestions.length > 0 ? [...suggestions] : []}
-                value={input}
-                style={styles(theme).input}
-                defaultValue={input}
-                placeholder="Search"
-                onChangeText={handleChange}
-                keyExtractor={(item) => item.id.toString()}
-                renderItem={({ item }) => (
-                    <TouchableOpacity
-                        onPress={() => {
-                            dispatch(setSelected(item));
-                            dispatch(setInput(""));
-                            dispatch(setSuggestionsAsync([]));
-                        }}
-                    >
-                        <View>
-                            <Text style={styles(theme).result}>{item.name}</Text>
-                        </View>
-                    </TouchableOpacity>
-                )}
-            />
-        </View>
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+            <View style={styles(theme).wrapper}>
+                <SelectedWrapper navigate={navigation.navigate} />
+                <Autocomplete
+                    data={suggestions && suggestions.length > 0 ? [...suggestions] : []}
+                    value={input}
+                    style={styles(theme).input}
+                    defaultValue={input}
+                    placeholder="Search"
+                    onChangeText={handleChange}
+                    keyExtractor={(item) => item.id.toString()}
+                    renderItem={({ item }) => (
+                        <TouchableOpacity
+                            onPress={() => {
+                                dispatch(setSelected(item));
+                                dispatch(setInput(""));
+                                dispatch(setSuggestionsAsync([]));
+                            }}
+                        >
+                            <View>
+                                <Text style={styles(theme).result}>{item.name}</Text>
+                            </View>
+                        </TouchableOpacity>
+                    )}
+                />
+            </View>
+        </TouchableWithoutFeedback>
     );
 };
 
 const styles = (theme: "light" | "dark") => {
     return StyleSheet.create({
+        wrapper: {
+            flex: 1,
+        },
         input: {
             color: Colors[theme].text,
             backgroundColor: Colors[theme].background,
