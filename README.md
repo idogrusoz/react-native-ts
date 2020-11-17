@@ -1,6 +1,6 @@
-# QOOSNQH (a React Native stack project)
+# QOOSNAH (a React Native stack project)
 
-> A basic recipe search app.
+> Recipe search app.
 
 ## Table of contents
 
@@ -20,8 +20,10 @@ Qoosnah is a basic recipe search app where users can choose ingredients and sear
 
 ## Screenshots
 
-![Example screenshot](./img/Screenshot_1.png)
-![Example screenshot](./img/Screenshot_2.png)
+![Example screenshot](./assets/images/IMG_4194.png)
+![Example screenshot](./assets/images/IMG_4195.png)
+![Example screenshot](./assets/images/IMG_4196.png)
+![Example screenshot](./assets/images/IMG_4197.png)
 
 ## Technologies
 
