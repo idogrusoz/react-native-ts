@@ -104,7 +104,7 @@ export const setRecipe = (recipe: Recipe): Action<"recipe", Recipe> => {
 export const setRecipeWithFetch = (id: number) => {
     return (dispatch: Dispatch<Action<"recipe", Recipe>>) => {
         axios
-            .get(`https://api.spoonacular.com/recipes/${id}`)
+            .get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=e07f3d4571c945aba22f1c2255303094`)
             .then((response) => response.data)
             .then((recipe) => dispatch(setRecipe(recipe)))
             .catch((err) => console.log("err", err));
@@ -123,7 +123,7 @@ export const setRandomResultsAsync = (randomResults: Recipe[]): Action<"randomRe
 export const setRandomResults = () => {
     return (dispatch: Dispatch<Action<"randomResults", Recipe[]>>) => {
         axios
-            .get("https://api.spoonacular.com/recipes/random?number=4")
+            .get("https://api.spoonacular.com/recipes/random?number=4&apiKey=e07f3d4571c945aba22f1c2255303094")
             .then((response) => response.data.recipes)
             .then((resipes) => dispatch(setRandomResultsAsync(resipes)))
             .catch((err) => console.log("err", err));
