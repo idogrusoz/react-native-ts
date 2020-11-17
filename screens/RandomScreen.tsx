@@ -21,7 +21,7 @@ const RandomScreen = () => {
         if (!Number.isNaN(randomCount)) {
             dispatch(setLoading(true));
             dispatch(setRandomResults(randomCount));
-            navigation.navigate("SearchResults");
+            navigation.navigate("RandomSearchResults");
         }
     };
     useEffect(() => {

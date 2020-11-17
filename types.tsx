@@ -18,7 +18,7 @@ export type TabOneParamList = {
 
 export type TabTwoParamList = {
     RandomScreen: undefined;
-    SearchResults: undefined;
+    RandomSearchResults: undefined;
     Recipe: undefined;
 };
 

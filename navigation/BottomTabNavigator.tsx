@@ -12,6 +12,7 @@ import SearchResults from "../screens/SearchResults";
 import { BottomTabParamList, TabOneParamList, TabTwoParamList } from "../types";
 import SearchScreen from "../screens/SearchScreen";
 import RandomScreen from "../screens/RandomScreen";
+import RandomSearchResults from "../screens/RandomSearchResults";
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -79,8 +80,8 @@ function RandomTabNavigator() {
                 options={{ headerTitle: "Random Recipes" }}
             />
             <TabTwoStack.Screen
-                name="SearchResults"
-                component={SearchResults}
+                name="RandomSearchResults"
+                component={RandomSearchResults}
                 options={{ headerTitle: "Random Recipes" }}
             />
             <TabTwoStack.Screen

@@ -4,11 +4,11 @@ import { useSelector } from "react-redux";
 import SingleResult from "../components/SingleResult/SingleResult";
 import { View, Text } from "../components/Themed";
 import { recipesSelector } from "../redux/selectors";
-import { RecipeSummary } from "../types";
+import { Recipe } from "../types";
 
-const SearchResults = () => {
-    const { loading, searchResults } = useSelector(recipesSelector);
-    const renderItem = ({ item }: { item: RecipeSummary }) => {
+const RandomSearchResults = () => {
+    const { loading, randomResults } = useSelector(recipesSelector);
+    const renderItem = ({ item }: { item: Recipe }) => {
         return <SingleResult id={item.id} title={item.title} image={item.image} key={item.id + item.title} />;
     };
 
@@ -16,11 +16,11 @@ const SearchResults = () => {
         <View style={styles.center}>
             <ActivityIndicator />
         </View>
-    ) : searchResults.length > 0 ? (
+    ) : randomResults.length > 0 ? (
         <FlatList
             numColumns={2}
             renderItem={renderItem}
-            data={searchResults}
+            data={randomResults}
             keyExtractor={(item) => item.id + item.title}
         />
     ) : (
@@ -42,4 +42,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default SearchResults;
+export default RandomSearchResults;
