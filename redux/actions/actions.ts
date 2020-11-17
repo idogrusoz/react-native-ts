@@ -120,12 +120,30 @@ export const setRandomResultsAsync = (randomResults: Recipe[]): Action<"randomRe
     };
 };
 
-export const setRandomResults = () => {
+export const setRandomResults = (count: number) => {
     return (dispatch: Dispatch<Action<"randomResults", Recipe[]>>) => {
         axios
-            .get("https://api.spoonacular.com/recipes/random?number=4&apiKey=e07f3d4571c945aba22f1c2255303094")
+            .get(`https://api.spoonacular.com/recipes/random?number=${count}&apiKey=e07f3d4571c945aba22f1c2255303094`)
             .then((response) => response.data.recipes)
-            .then((resipes) => dispatch(setRandomResultsAsync(resipes)))
+            .then((recipes) => dispatch(setRandomResultsAsync(recipes)))
             .catch((err) => console.log("err", err));
+    };
+};
+
+export const setIsRandom = (isRandom: boolean): Action<"isRandom", boolean> => {
+    return {
+        type: Actions.SET_IS_RANDOM,
+        payload: {
+            isRandom,
+        },
+    };
+};
+
+export const setRandomCount = (randomCount: number): Action<"randomCount", number> => {
+    return {
+        type: Actions.SET_RANDOM_COUNT,
+        payload: {
+            randomCount,
+        },
     };
 };

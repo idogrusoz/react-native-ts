@@ -7,6 +7,8 @@ const initialState: RecipeState = {
     recipe: null,
     randomResults: [],
     loading: false,
+    isRandom: true,
+    randomCount: 1,
 };
 
 function recipes(state = initialState, action: Action<any, any>) {
@@ -26,13 +28,23 @@ function recipes(state = initialState, action: Action<any, any>) {
         case Actions.SET_RANDOM_RESULTS:
             return {
                 ...state,
-                randomResults: [...action.payload.randomeResults],
+                randomResults: [...action.payload.randomResults],
                 loading: false,
             };
         case Actions.SET_LOADING:
             return {
                 ...state,
                 loading: action.payload.loading,
+            };
+        case Actions.SET_IS_RANDOM:
+            return {
+                ...state,
+                isRandom: action.payload.isRandom,
+            };
+        case Actions.SET_RANDOM_COUNT:
+            return {
+                ...state,
+                randomCount: action.payload.randomCount,
             };
         default:
             return state;
